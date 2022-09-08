@@ -2,8 +2,8 @@
   "hosting": {
     "public": "dist",
     "rewrites": [{
-      "source": "/user",
-      "function": "user"
+      "source": "**",
+      "function": "app"
     }],
     "ignore": [
       "firebase.json",
