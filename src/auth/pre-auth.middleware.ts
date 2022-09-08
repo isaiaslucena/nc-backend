@@ -14,15 +14,12 @@ export class PreAuthMiddleware implements NestMiddleware {
     this.app = firebaseAdmin.initializeApp(firebaseConfig)
   }
 
-  async use(req: any, res: any, next: () => void) {
+  async use(req: any, _res: any, next: () => void) {
     const token = req.headers.authorization
-    console.log('header token:', token)
 
     if (token) {
       try {
-        const decodedToken = await this.app
-          .auth()
-          .verifyIdToken(token.replace('Bearer ', ''))
+        await this.app.auth().verifyIdToken(token.replace('Bearer ', ''))
 
         next()
       } catch (error: any) {
