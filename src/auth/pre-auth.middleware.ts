@@ -14,7 +14,7 @@ export class PreAuthMiddleware implements NestMiddleware {
     this.app = firebaseAdmin.initializeApp(firebaseConfig)
   }
 
-  async use(req: any, res: any, next: () => void) {
+  async use(req: any, _res: any, next: () => void) {
     const token = req.headers.authorization
 
     if (token) {
